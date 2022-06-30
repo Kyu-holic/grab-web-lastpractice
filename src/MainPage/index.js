@@ -1,6 +1,7 @@
 import "./index.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function MainPage() {
   const [products, setProducts] = useState([]);
@@ -12,19 +13,16 @@ function MainPage() {
       )
       .then(function (result) {
         const products = result.data.products;
+        setProducts(products);
         console.log(products);
       })
       .catch(function (error) {
         console.error("에러 발생 : ", error);
       });
-  });
+  }, []);
+
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <img src="./images/icons/logo.png" alt="" />
-        </div>
-      </div>
       <div id="body">
         <div id="banner">
           <img src="./images/banners/banner1.png" alt="" />
@@ -32,31 +30,31 @@ function MainPage() {
         <h1>판매되는 상품들</h1>
         <div id="product-list">
           {products.map(function (product, index) {
-            <div className="product-card">
-              <div>
-                <img
-                  className="product-img"
-                  src="/images/products/basketball1.jpeg"
-                />
-              </div>
-              <div className="product-contents">
-                <div className="product-name">농구공</div>
-                <div className="product-price">100000원</div>
-              </div>
-              <div className="product-footer">
-                <div className="product-seller">
-                  <img
-                    className="product-avatar"
-                    src="/images/icons/avatar.png"
-                  />
-                  <span>규호</span>
+            return (
+              <Link className="product-link" to={`/products/${product.id}`}>
+                <div className="product-card">
+                  <div>
+                    <img className="product-img" src={`${product.imageUrl}`} />
+                  </div>
+                  <div className="product-contents">
+                    <div className="product-name">{product.name}</div>
+                    <div className="product-price">{product.price}</div>
+                  </div>
+                  <div className="product-footer">
+                    <div className="product-seller">
+                      <img
+                        className="product-avatar"
+                        src="/images/icons/avatar.png"
+                      />
+                      <span>{product.seller}</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>;
+              </Link>
+            );
           })}
         </div>
       </div>
-      <div id="footer"></div>
     </div>
   );
 }
