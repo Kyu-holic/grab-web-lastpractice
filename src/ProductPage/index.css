@@ -1,0 +1,41 @@
+#image-box {
+  height: 300px;
+  text-align: center;
+}
+
+#image-box > img {
+  width: 300px;
+  height: 300px;
+}
+
+#profile-box{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+}
+
+#profile-box > img{
+    width: 50px;
+}
+
+#product-seller {
+    font-size: 18px;
+}
+
+#name {
+    font-size: 18px;
+}
+
+#price {
+    font-weight: bold;
+}
+
+#createdAt{
+    color:#ccc
+}
+
+#description {
+    margin-top: 10px;
+}
