@@ -1,0 +1,19 @@
+#upload-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #ddd;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 254, 254);
+}
+
+#upload-img-placeholder > img {
+  width: 50px;
+  height: 50px;
+}
+
+#upload-img-placeholder > span {
+  color: rgb(209, 194, 194);
+}
