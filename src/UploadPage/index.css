@@ -1,3 +1,7 @@
+#upload-container {
+  margin: 16px;
+}
+
 #upload-img-placeholder {
   display: flex;
   flex-direction: column;
@@ -16,4 +20,25 @@
 
 #upload-img-placeholder > span {
   color: rgb(209, 194, 194);
+}
+
+.upload-name {
+  width: 250px;
+}
+
+.upload-label {
+  width: 80px;
+  font-size: 18px;
+}
+
+.label-pic {
+  margin-left: 10px;
+}
+
+.upload-button {
+  float: right;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: dodgerblue;
+  color: white;
 }
