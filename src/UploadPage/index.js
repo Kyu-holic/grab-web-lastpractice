@@ -1,19 +1,47 @@
 import react from "react";
-import { Form, Divider, Input, InputNumber, Button } from "antd";
+import { Form, Divider, Input, InputNumber, Button, Upload } from "antd";
+import { useState } from "react";
 import "./index.css";
 
 function UploadPage() {
+  const [imageUrl, setImageUrl] = useState(null);
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+  const onChangeImage = (info) => {
+    if (info.file.status === "uploading") {
+      return;
+    }
+    if (info.file.status === "done") {
+      const response = info.file.response;
+      const imageUrl = response.imageUrl;
+      setImageUrl(imageUrl);
+    }
+  };
+
   return (
     <div id="upload-container">
-      <Form name="product-upload" onFinish={function () {}}>
+      <Form name="product-upload" onFinish={onSubmit}>
         <Form.Item
           name="upload"
           label={<div className="upload-label label-pic">상품 사진</div>}
         >
-          <div id="upload-img-placeholder">
-            <img src="images/icons/camera.png" />
-            <span>이미지를 업로드해주세요.</span>
-          </div>
+          <Upload
+            name="image"
+            action="http://localhost:8080/image"
+            listType="picture"
+            showUploadList={false}
+            onChange={onChangeImage}
+          >
+            {imageUrl ? (
+              <img id="upload-image" src={`http://localhost:8080/${imageUrl}`} />
+            ) : (
+              <div id="upload-img-placeholder">
+                <img src="images/icons/camera.png" />
+                <span>이미지를 업로드해주세요.</span>
+              </div>
+            )}
+          </Upload>
         </Form.Item>
         <Divider />
         <Form.Item
@@ -62,7 +90,7 @@ function UploadPage() {
             rows={4}
           />
         </Form.Item>
-        <Button className="upload-button" size="large">
+        <Button className="upload-button" size="large" htmlType="submit">
           상품 업로드하기
         </Button>
       </Form>

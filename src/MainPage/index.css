@@ -50,7 +50,6 @@
 .product-seller {
   display: flex;
   align-items: center;
-  margin-top: 12px;
 }
 
 .product-avatar {
@@ -60,4 +59,11 @@
 .product-link {
   text-decoration: none;
   color: inherit;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }

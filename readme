@@ -106,7 +106,7 @@
 
 46. server로 가서 sequelite 생성 
 
-47. uploadPage의 index.js로 가서 axios를 http://localhost:8080/products/${id}로 바꾸기
+47. productPage의 index.js로 가서 axios를 http://localhost:8080/products/${id}로 바꾸기
 
 48. axios에서 setProduct에 result.data로 되어 있는데 server에서 findone을 통해
     PRODUCTS 객체를 product로 받았으므로 result.data를 result.data.product로 바꾼다.
@@ -127,6 +127,8 @@
 55. dayjs(product.createAt).fromNow()로 변경
 
 56. dayjs를 product-date classname을 준 다음 css 변경
+
+다시 서버로 돌아가서 multer 작성
 
 57. antd의 속성으로 Upload를 사용하면 api 서버랑 통신을 주고받을 수 있게 해줌
     <Upload>로 upload-img-placeholder 부분을 감싸주고
